@@ -20,12 +20,22 @@
         <label for="password" class="block text-white text-sm font-bold mb-2"
           >Password</label
         >
-        <input
-          type="password"
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-          id="password"
-          placeholder="Password"
-        />
+        <div class="relative">
+          <input
+            [type]="fieldTextType ? 'text' : 'password'"
+            class="block shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            id="password"
+            placeholder="Password"
+          />
+          <fa-icon
+            [icon]="fieldTextType ? faEye : faEyeSlash"
+            (click)="toggleFieldTextType()"
+            class="absolute top-0 end-0 px-2 py-2 text-[#ED1C24]"
+          ></fa-icon>
+        </div>
+        <p class="text-right text-[#ddd9d9] text-[12px]">
+          <a href="forgot-password">Forgot Password?</a>
+        </p>
       </div>
     </div>
     <div class="px-10 py-3 flex flex-col gap-3">
@@ -36,13 +46,24 @@
         Login
       </button>
       <p class="text-white text-center">or</p>
-      <button type="button" class="mx-auto bg-white w-full rounded py-2 flex gap-3 justify-center">
+      <button
+        type="button"
+        class="mx-auto bg-white w-full rounded py-2 flex gap-3 justify-center"
+      >
         <img
           src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
           class="w-4 h-4 my-auto"
         />
         Continue with Google
       </button>
+    </div>
+    <div>
+      <p class="text-center text-white">
+        Don't have an account?
+        <span class="text-[#ddd9d9]"
+          ><a href="create-account">Create one</a></span
+        >
+      </p>
     </div>
   </div>
 </div>
