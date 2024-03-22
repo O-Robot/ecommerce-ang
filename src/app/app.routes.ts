@@ -3,12 +3,12 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
 import { LandingPageComponent } from './pages/website/landing-page/landing-page.component';
 import { AuthGuard } from './services/authGuard/auth-guard.service';
-import { ProductsComponent } from './pages/admin/products/products.component';
+import { ProductsComponent } from './pages/website/products/products.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'landing',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -24,7 +24,7 @@ export const routes: Routes = [
     component: SignupComponent,
   },
   {
-    path: 'landing',
+    path: 'home',
     component: LandingPageComponent,
     canActivate: [AuthGuard],
   },
