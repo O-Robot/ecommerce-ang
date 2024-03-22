@@ -17,4 +17,5 @@ export class NavbarComponent {
   faCart = faCartShopping;
   faWish = faHeart;
   faAccount = faUserCircle;
+  showNavbar: boolean = false;
 }
