@@ -1,2 +1,34 @@
 <app-navbar></app-navbar>
-<p>landing-page works!</p>
+<section id="landing" class="overflow-x-hidden">
+  <section id="banner">
+    <div class="p-20 bg-black">
+      <video autoplay loop muted>
+        <source
+          src="https://www.apple.com/105/media/us/iphone-15-pro/2023/2f337511-a940-4b57-b89c-1512b7507777/anim/hero/large_2x.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+  <section id="featured">
+    <div class="flex justify-between p-10">
+      <h1 class="py-2 font-bold text-[20px]">Featured</h1>
+      <button class="px-4 py-2 bg-[#13679B] font-bold text-[14px] text-white">
+        View All Products
+      </button>
+    </div>
+    <div class="px-10 py-5 grid grid-cols-5 gap-5 m-auto">
+      <app-product></app-product>
+      <app-product></app-product>
+      <app-product></app-product>
+      <app-product></app-product>
+      <app-product></app-product>
+      <app-product></app-product>
+      <app-product></app-product>
+      <app-product></app-product>
+      <app-product></app-product>
+      <app-product></app-product>
+    </div>
+  </section>
+</section>
