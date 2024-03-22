@@ -4,6 +4,7 @@ import { SignupComponent } from './pages/auth/signup/signup.component';
 import { LandingPageComponent } from './pages/website/landing-page/landing-page.component';
 import { AuthGuard } from './services/authGuard/auth-guard.service';
 import { ProductsComponent } from './pages/website/products/products.component';
+import { SingleProductComponent } from './pages/website/single-product/single-product.component';
 
 export const routes: Routes = [
   {
@@ -31,6 +32,11 @@ export const routes: Routes = [
   {
     path: 'all-products',
     component: ProductsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'single-product',
+    component: SingleProductComponent,
     canActivate: [AuthGuard],
   },
 ];
