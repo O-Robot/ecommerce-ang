@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
+import { LandingPageComponent } from './pages/website/landing-page/landing-page.component';
 
 export const routes: Routes = [
   {
@@ -19,5 +20,9 @@ export const routes: Routes = [
   {
     path: 'forgot-password',
     component: SignupComponent,
+  },
+  {
+    path: 'landing',
+    component: LandingPageComponent,
   },
 ];
