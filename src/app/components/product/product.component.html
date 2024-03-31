@@ -2,9 +2,9 @@
   <a href="single-product">
     <div class="relative flex h-1/2 w-full overflow-hidden rounded-lg" href="#">
       <img
-        class="object-cover min-h-52"
-        src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-model-unselect-gallery-2-202309_GEO_US?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1693010535312"
-        alt="product image"
+        class="object-fit mx-auto min-h-52 h-40"
+        [src]="product.image"
+        [alt]="product.title"
       />
 
       <div
@@ -16,40 +16,48 @@
       </div>
     </div>
     <div class="mt-4 pb-5">
-      <h5 class="text-lg tracking-tight text-slate-900">
-        iPhone 15 Pro Max - 256GB
+      <h5 class="text-lg tracking-tight text-slate-900 h-20">
+        {{ product.title }}
       </h5>
 
       <div class="mt-2 mb-5 flex items-center justify-between">
         <p>
-          <span class="text-2xl font-bold text-slate-900">$449</span>
-          <span class="text-sm text-slate-900 line-through">$699</span>
+          <span class="text-2xl font-bold text-slate-900"
+            >₦{{ product.price * 1500 | number : "1.2-2" }}</span
+          >
+          <span class="text-sm text-slate-900 line-through"
+            >₦{{ product.price * 1500 + 20000 | number : "1.2-2" }}</span
+          >
         </p>
         <div class="flex items-center justify-center">
-          <fa-icon
-            [icon]="faRate"
-            class="h-5 w-5 text-yellow-300 mx-auto"
-          ></fa-icon>
-          <fa-icon
-            [icon]="faRate"
-            class="h-5 w-5 text-yellow-300 mx-auto"
-          ></fa-icon>
-          <fa-icon
-            [icon]="faRate"
-            class="h-5 w-5 text-yellow-300 mx-auto"
-          ></fa-icon>
-          <fa-icon
-            [icon]="faRate"
-            class="h-5 w-5 text-yellow-300 mx-auto"
-          ></fa-icon>
-          <fa-icon
-            [icon]="faRate"
-            class="h-5 w-5 text-yellow-300 mx-auto"
-          ></fa-icon>
-
+          <!-- Full Starts  -->
+          <ng-container
+            *ngFor="let _ of Array(Math.floor(product.rating.rate))"
+          >
+            <fa-icon
+              [icon]="faRate"
+              class="h-5 w-5 text-orange-400 mx-auto"
+            ></fa-icon>
+          </ng-container>
+          <!-- Half Stars  -->
+          <ng-container *ngIf="product.rating.rate % 1 >= 0.5">
+            <fa-icon
+              [icon]="faHalf"
+              class="h-5 w-5 text-orange-400 mx-auto"
+            ></fa-icon>
+          </ng-container>
+          <!-- Empty Stars  -->
+          <ng-container
+            *ngFor="let _ of Array(5 - Math.ceil(product.rating.rate))"
+          >
+            <fa-icon
+              [icon]="faEmpty"
+              class="h-5 w-5 text-gray-300 mx-auto"
+            ></fa-icon>
+          </ng-container>
           <span
-            class="mr-2 ml-1 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold"
-            >5.0</span
+            class="mr-2 ml-1 rounded bg-orange-300 px-2.5 py-0.5 text-xs font-semibold"
+            >{{ product.rating.rate }}</span
           >
         </div>
       </div>
