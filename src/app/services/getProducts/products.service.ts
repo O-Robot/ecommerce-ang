@@ -30,7 +30,6 @@ export class ProductsService {
       next: (res) => {
         const shuffledProducts = this.shuffleArray(res);
         this.productsSubject.next(shuffledProducts);
-        console.log('Data', res);
       },
       error: (error) => {
         console.log('Error Fetching Product', error);

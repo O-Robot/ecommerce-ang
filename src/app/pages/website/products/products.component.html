@@ -1,15 +1,31 @@
 <section id="featured">
   <div class="flex justify-between p-10">
-    <h1 class="py-2 font-bold text-[20px]">All Products</h1>
-    <select
-      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
-    >
-      <option selected>Filter</option>
-      <option value="US">New Arrivals</option>
-      <option value="CA">Relevance</option>
-      <option value="FR">Low to High</option>
-      <option value="DE">High to Low</option>
-    </select>
+    <div class="flex items-center gap-2">
+      <h1 class="py-2 font-bold text-[20px] uppercase">
+        {{
+          selectedCategory === "Categories" ? "All Products" : selectedCategory
+        }}
+      </h1>
+    </div>
+
+    <div class="flex gap-4">
+      <select
+        class="bg-gray-50 border border-gray-300 uppercase text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+        (change)="onCategorySelect($event)"
+      >
+        <option selected>Categories</option>
+        <option *ngFor="let category of categories" [value]="category">
+          {{ category }}
+        </option></select
+      ><select
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5"
+        (change)="sortProducts($event)"
+      >
+        <option selected>Filter</option>
+        <option value="lowToHigh">Price: Low to High</option>
+        <option value="highToLow">Price: High to Low</option>
+      </select>
+    </div>
   </div>
   <div
     class="px-10 py-5 grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-5 m-auto"
