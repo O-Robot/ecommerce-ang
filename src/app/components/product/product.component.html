@@ -1,68 +1,67 @@
 <div class="relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg">
-  <a href="single-product">
-    <div class="relative flex h-1/2 w-full overflow-hidden rounded-lg" href="#">
-      <img
-        class="object-fit mx-auto min-h-52 h-40"
-        [src]="product.image"
-        [alt]="product.title"
-      />
+  <div class="relative flex h-1/2 w-full overflow-hidden rounded-lg" href="#">
+    <img
+      class="object-fit mx-auto min-h-52 h-40"
+      [src]="product.image"
+      [alt]="product.title"
+    />
 
-      <div
-        class="absolute flex flex-col gap-3 top-0 right-0 m-2 px-2 text-center text-[14px] font-medium text-white"
-      >
-        <fa-icon [icon]="faWish" class="rounded bg-[#13679B] p-1"></fa-icon>
+    <div
+      class="absolute flex flex-col gap-3 top-0 right-0 m-2 px-2 text-center text-[14px] font-medium text-white"
+    >
+      <fa-icon [icon]="faWish" class="rounded bg-[#13679B] p-1"></fa-icon>
 
-        <fa-icon [icon]="faView" class="rounded bg-[#13679B] p-1"></fa-icon>
+      <fa-icon [icon]="faView" class="rounded bg-[#13679B] p-1"></fa-icon>
+    </div>
+  </div>
+  <div class="mt-4 pb-5">
+    <h5 class="text-lg tracking-tight text-slate-900 h-[3.6rem] overflow-hidden">
+      {{ product.title }}
+    </h5>
+
+    <div class="mt-2 mb-5 flex items-center justify-between">
+      <p>
+        <span class="text-2xl font-bold text-slate-900"
+          >₦{{ product.price * 1500 | number : "1.2-2" }}</span
+        >
+        <span class="text-sm text-slate-900 line-through"
+          >₦{{ product.price * 1500 + 20000 | number : "1.2-2" }}</span
+        >
+      </p>
+    </div>
+    <div class="mt-2 flex right-0 justify-end">
+      <div class="flex items-center right-0 justify-center">
+        <!-- Full Stars  -->
+        <ng-container *ngFor="let _ of Array(Math.floor(product.rating.rate))">
+          <fa-icon
+            [icon]="faRate"
+            class="h-5 w-5 text-orange-400 mx-auto"
+          ></fa-icon>
+        </ng-container>
+        <!-- Half Stars  -->
+        <ng-container *ngIf="product.rating.rate % 1 >= 0.5">
+          <fa-icon
+            [icon]="faHalf"
+            class="h-5 w-5 text-orange-400 mx-auto"
+          ></fa-icon>
+        </ng-container>
+        <!-- Empty Stars  -->
+        <ng-container
+          *ngFor="let _ of Array(5 - Math.ceil(product.rating.rate))"
+        >
+          <fa-icon
+            [icon]="faEmpty"
+            class="h-5 w-5 text-gray-300 mx-auto"
+          ></fa-icon>
+        </ng-container>
+        <span
+          class="mr-2 ml-1 rounded bg-orange-300 px-2.5 py-0.5 text-xs font-semibold"
+          >{{ product.rating.rate }}</span
+        >
       </div>
     </div>
-    <div class="mt-4 pb-5">
-      <h5 class="text-lg tracking-tight text-slate-900 h-20">
-        {{ product.title }}
-      </h5>
+  </div>
 
-      <div class="mt-2 mb-5 flex items-center justify-between">
-        <p>
-          <span class="text-2xl font-bold text-slate-900"
-            >₦{{ product.price * 1500 | number : "1.2-2" }}</span
-          >
-          <span class="text-sm text-slate-900 line-through"
-            >₦{{ product.price * 1500 + 20000 | number : "1.2-2" }}</span
-          >
-        </p>
-        <div class="flex items-center justify-center">
-          <!-- Full Starts  -->
-          <ng-container
-            *ngFor="let _ of Array(Math.floor(product.rating.rate))"
-          >
-            <fa-icon
-              [icon]="faRate"
-              class="h-5 w-5 text-orange-400 mx-auto"
-            ></fa-icon>
-          </ng-container>
-          <!-- Half Stars  -->
-          <ng-container *ngIf="product.rating.rate % 1 >= 0.5">
-            <fa-icon
-              [icon]="faHalf"
-              class="h-5 w-5 text-orange-400 mx-auto"
-            ></fa-icon>
-          </ng-container>
-          <!-- Empty Stars  -->
-          <ng-container
-            *ngFor="let _ of Array(5 - Math.ceil(product.rating.rate))"
-          >
-            <fa-icon
-              [icon]="faEmpty"
-              class="h-5 w-5 text-gray-300 mx-auto"
-            ></fa-icon>
-          </ng-container>
-          <span
-            class="mr-2 ml-1 rounded bg-orange-300 px-2.5 py-0.5 text-xs font-semibold"
-            >{{ product.rating.rate }}</span
-          >
-        </div>
-      </div>
-    </div>
-  </a>
   <button
     class="flex items-center w-full justify-center rounded-md bg-[#13679B] border border-[#13679B] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-white hover:text-[#13679B]"
   >

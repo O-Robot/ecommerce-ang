@@ -15,10 +15,21 @@ export class ProductsService {
   constructor(private http: HttpClient) {
     this.getProducts();
   }
+
+  // Function to shuffle an array using Fisher-Yates algorithm
+  shuffleArray<T>(array: T[]): T[] {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
   getProducts(): void {
     this.http.get<any[]>(this.apiUrl).subscribe({
       next: (res) => {
-        this.productsSubject.next(res);
+        const shuffledProducts = this.shuffleArray(res);
+        this.productsSubject.next(shuffledProducts);
         console.log('Data', res);
       },
       error: (error) => {
@@ -29,5 +40,9 @@ export class ProductsService {
 
   fetchAllProducts(): Observable<any[]> {
     return this.products$;
+  }
+
+  getProductsById(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/${id}`);
   }
 }

@@ -35,7 +35,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'single-product',
+    path: 'single-product/:productId',
     component: SingleProductComponent,
     canActivate: [AuthGuard],
   },

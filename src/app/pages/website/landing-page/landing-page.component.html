@@ -21,18 +21,13 @@
       </a>
     </div>
     <div
-      class="px-10 py-5 grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5 m-auto"
+      class="px-10 py-5 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 m-auto"
     >
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
-      <app-product></app-product>
+      <app-product
+        *ngFor="let product of products"
+        [product]="product"
+        (click)="navigateToProduct(product.id)"
+      ></app-product>
     </div>
   </section>
 </section>
