@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faCartShopping,
@@ -18,4 +19,8 @@ export class NavbarComponent {
   faWish = faHeart;
   faAccount = faUserCircle;
   showNavbar: boolean = false;
+  constructor(private router: Router) {}
+  navigateToCart() {
+    this.router.navigate(['cart']);
+  }
 }

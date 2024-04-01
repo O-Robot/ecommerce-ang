@@ -39,10 +39,6 @@ export class ProductsComponent implements OnInit {
     this.fetchAllCategories();
   }
 
-  navigateToProduct(productId: number) {
-    this.router.navigate(['single-product', productId]);
-  }
-
   fethcProducts(): void {
     this.productService.fetchAllProducts().subscribe((products) => {
       this.products = products;

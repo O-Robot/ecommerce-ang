@@ -1,0 +1,93 @@
+<ng-container *ngIf="items.length"
+  ><div class="bg-gray-800 py-20 min-h-[60vh]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="py-5 text-white"><a href="">Home</a> >> Cart</div>
+      <div
+        class="flex justify-between text-center gap-2 bg-white w-full h-auto rounded py-2 px-3 lg:px-7"
+      >
+        <div class="w-[25%] text-start">Product</div>
+        <div class="w-[25%]">Price</div>
+        <div class="w-[25%]">Quantity</div>
+        <div class="w-[25%]">Sub Total</div>
+        <div class="w-[25%]">Action</div>
+      </div>
+      <div
+        *ngFor="let item of items"
+        class="flex justify-between items-center text-center gap-2 bg-white w-full h-auto mt-5 rounded py-5 px-3 lg:px-7"
+      >
+        <div class="w-[25%] flex gap-2 text-start items-center">
+          <img [src]="item.image" class="w-10 h-10" />
+          <span>{{ item.title }}</span>
+        </div>
+        <div class="w-[25%]">₦{{ item.price * 1500 | number : "1.2-2" }}</div>
+        <div class="w-[25%]">
+          <input
+            [value]="item.quantity"
+            min="1"
+            class="w-14 rounded-md border border-[#828282] py-1.5 pl-3 pr-1.5 text-gray-900"
+            type="number"
+            (change)="updateQuantity($event, item)"
+          />
+        </div>
+        <div class="w-[25%]">
+          ₦{{ item.subtotal * 1500 | number : "1.2-2" }}
+        </div>
+        <div class="w-[25%] text-red-600">
+          <fa-icon
+            (click)="deleteItem(item.id)"
+            [icon]="faRemove"
+            class="cursor-pointer"
+          ></fa-icon>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex justify-between max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5"
+    >
+      <div></div>
+      <div>
+        <div class="flex gap-3 justify-end bg-white rounded px-4 py-2">
+          <tbody>
+            <tr>
+              <td class="pr-5 py-1">
+                <p class="text-[16px] text-right">Total:</p>
+              </td>
+              <td class="pr-5 py-1">
+                <p class="text-[16px] text-right">Subtotal:</p>
+              </td>
+            </tr>
+          </tbody>
+        </div>
+        <button
+          (click)="clearCart()"
+          class="flex items-center w-full justify-center rounded-md text-white my-1.5 px-5 py-2.5 text-center text-sm font-medium bg-red-600 hover:bg-red-800"
+        >
+          Clear Cart
+        </button>
+      </div>
+    </div>
+  </div></ng-container
+>
+<ng-container *ngIf="!items.length"
+  ><div class="bg-gray-800 py-20 min-h-[60vh]">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="py-5 text-white"><a href="">Home</a> >> Cart</div>
+      <div class="w-full h-[60vh]">
+        <div
+          class="flex flex-col w-1/2 gap-7 m-auto text-center text-white p-20"
+        >
+          <fa-icon [icon]="faCart" class="text-[100px]"></fa-icon>
+          <p>Shopping Cart is Empty</p>
+          <div>
+            <button
+              (click)="navigateToProduct()"
+              class="flex items-center w-full justify-center rounded-md text-[#13679B] border border-[#13679B] px-5 py-2.5 text-center text-sm font-medium bg-white hover:bg-white hover:text-[#13679B]"
+            >
+              Start Shopping
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></ng-container
+>

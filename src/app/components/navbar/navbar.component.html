@@ -8,13 +8,15 @@
       <li class="text-white text-[16px]">
         <a href="all-products">All Products</a>
       </li>
-      <li class="text-white text-[16px]"><a href="">About Us</a></li>
-      <li class="text-white text-[16px]"><a href="">Contact</a></li>
+      <li class="text-white text-[16px]"><a href="cart">Cart</a></li>
+      <!-- <li class="text-white text-[16px]"><a href="">Contact</a></li> -->
     </ul>
   </div>
   <div class="h-16 my-auto p-4 flex gap-6 text-white">
-    <fa-icon [icon]="faCart"></fa-icon>
+    <fa-icon (click)="navigateToCart()" [icon]="faCart"></fa-icon>
     <fa-icon [icon]="faWish"></fa-icon>
-    <fa-icon [icon]="faAccount"></fa-icon>
+    <a href="login">
+      <fa-icon [icon]="faAccount"></fa-icon>
+    </a>
   </div>
 </div>

@@ -1,5 +1,8 @@
 <div class="relative flex w-full max-w-xs flex-col overflow-hidden rounded-lg">
-  <div class="relative flex h-1/2 w-full overflow-hidden rounded-lg" href="#">
+  <div
+    class="relative flex h-1/2 w-full overflow-hidden rounded-lg cursor-pointer"
+    (click)="navigateToProduct(product.id)"
+  >
     <img
       class="object-fit mx-auto min-h-52 h-40"
       [src]="product.image"
@@ -14,8 +17,10 @@
       <fa-icon [icon]="faView" class="rounded bg-[#13679B] p-1"></fa-icon>
     </div>
   </div>
-  <div class="mt-4 pb-5">
-    <h5 class="text-lg tracking-tight text-slate-900 h-[3.6rem] overflow-hidden">
+  <div class="mt-4 pb-5 cursor-pointer" (click)="navigateToProduct(product.id)">
+    <h5
+      class="text-lg tracking-tight text-slate-900 h-[3.6rem] overflow-hidden"
+    >
       {{ product.title }}
     </h5>
 
@@ -61,8 +66,9 @@
       </div>
     </div>
   </div>
-
+  <!-- <p-toast></p-toast> -->
   <button
+    (click)="addToCart(product)"
     class="flex items-center w-full justify-center rounded-md bg-[#13679B] border border-[#13679B] px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-white hover:text-[#13679B]"
   >
     <fa-icon [icon]="faCart" class="rounded p-1"></fa-icon>Add to Cart

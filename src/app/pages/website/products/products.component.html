@@ -3,7 +3,9 @@
     <div class="flex items-center gap-2">
       <h1 class="py-2 font-bold text-[20px] uppercase">
         {{
-          selectedCategory === "Categories" ? "All Products" : selectedCategory
+          selectedCategory === "Categories" || !selectedCategory
+            ? "All Products"
+            : selectedCategory
         }}
       </h1>
     </div>
@@ -33,7 +35,7 @@
     <app-product
       *ngFor="let product of products"
       [product]="product"
-      (click)="navigateToProduct(product.id)"
+     
     ></app-product>
   </div>
 </section>

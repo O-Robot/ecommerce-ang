@@ -12,16 +12,20 @@ import { FooterComponent } from './components/footer/footer.component';
 import { filter } from 'rxjs/operators';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsService } from './services/getProducts/products.service';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    CommonModule,
     HttpClientModule,
     NavbarComponent,
     RouterOutlet,
     FooterComponent,
-    CommonModule,
+    ToastModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
