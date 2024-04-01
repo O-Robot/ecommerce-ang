@@ -53,7 +53,9 @@
                 <p class="text-[16px] text-right">Total:</p>
               </td>
               <td class="pr-5 py-1">
-                <p class="text-[16px] text-right">₦</p>
+                <p class="text-[16px] text-right">
+                  ₦{{ grandTotal * 1500 | number : "1.2-2" }}
+                </p>
               </td>
             </tr>
           </tbody>

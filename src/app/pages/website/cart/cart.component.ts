@@ -8,6 +8,8 @@ import {
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-cart',
@@ -18,11 +20,15 @@ import { Router } from '@angular/router';
 })
 export class CartComponent implements OnInit {
   items: any[] = [];
-  // grandTotal: number = 0;
+  grandTotal: number = 0;
   faRemove = faTrash;
   faCart = faShoppingCart;
 
-  constructor(private router: Router, private cartService: CartService) {}
+  constructor(
+    private router: Router,
+    private cartService: CartService,
+    
+  ) {}
   navigateToProduct() {
     this.router.navigate(['all-products']);
   }
@@ -34,6 +40,9 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.items = this.cartService.getItems();
     console.log(this.items);
+    this.cartService.grandTotal$.subscribe((total) => {
+      this.grandTotal = total;
+    });
   }
 
   updateQuantity(event: Event, item: any) {
@@ -45,14 +54,10 @@ export class CartComponent implements OnInit {
       item.quantity = parsedQuantity;
       item.subtotal = item.price * item.quantity;
       this.cartService.saveCartItems();
+      this.cartService.getTotalPrice();
     }
   }
-  // getTotalPrice() {
-  //   this.items.forEach((item: any) => {
-  //     this.grandTotal += item.subtotal;
-  //     console.log('test', item.subtotal);
-  //   });
-  // }
+
   deleteItem(id: number) {
     this.cartService.removeItem(id);
     this.items = this.cartService.getItems();

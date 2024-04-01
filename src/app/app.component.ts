@@ -25,7 +25,6 @@ import { BrowserModule } from '@angular/platform-browser';
     NavbarComponent,
     RouterOutlet,
     FooterComponent,
-    ToastModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
