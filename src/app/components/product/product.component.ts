@@ -46,7 +46,7 @@ export class ProductComponent {
   }
   addToCart(product: any) {
     this.cartService.addToCart(product);
-    console.log('product added');
+    alert('Added to Cart!');
     // this.show();
   }
 

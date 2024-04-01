@@ -41,6 +41,7 @@ export class CartService {
       const newItem = { ...product, quantity: 1, subtotal: product.price };
       this.items.push(newItem);
     }
+
     this.saveCartItems();
   }
 
@@ -50,17 +51,12 @@ export class CartService {
 
   clearCart() {
     this.items = [];
+    localStorage.removeItem(this.STORAGE_KEY);
     return this.items;
-  }
-
-  getTotalPrice() {
-    let grandTotal = 0;
-    this.items.map((a: any) => {
-      grandTotal += a.subtotal;
-    });
   }
 
   removeItem(id: number) {
     this.items = this.items.filter((item) => item.id !== id);
+    this.saveCartItems();
   }
 }

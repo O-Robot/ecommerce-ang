@@ -8,12 +8,25 @@
       <li class="text-white text-[16px]">
         <a href="all-products">All Products</a>
       </li>
-      <li class="text-white text-[16px]"><a href="cart">Cart</a></li>
-      <!-- <li class="text-white text-[16px]"><a href="">Contact</a></li> -->
+      <li class="text-white text-[16px] relative">
+        <a href="cart">Cart</a
+        ><span
+          *ngIf="cartItemCount > 0"
+          class="bg-red-500 text-white rounded-full px-1.5 py-0.5 text-xs absolute top-0 right-0 -mt-1 -mr-4"
+          >{{ cartItemCount }}</span
+        >
+      </li>
     </ul>
   </div>
   <div class="h-16 my-auto p-4 flex gap-6 text-white">
-    <fa-icon (click)="navigateToCart()" [icon]="faCart"></fa-icon>
+    <div class="relative text-white">
+      <fa-icon (click)="navigateToCart()" [icon]="faCart" class=" "></fa-icon
+      ><span
+        *ngIf="cartItemCount > 0"
+        class="bg-red-500 text-white rounded-full px-1.5 py-0.5 text-xs absolute top-0 right-0 -mt-1 -mr-3"
+        >{{ cartItemCount }}</span
+      >
+    </div>
     <fa-icon [icon]="faWish"></fa-icon>
     <a href="login">
       <fa-icon [icon]="faAccount"></fa-icon>

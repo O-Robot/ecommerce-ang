@@ -18,6 +18,7 @@ import { Router } from '@angular/router';
 })
 export class CartComponent implements OnInit {
   items: any[] = [];
+  // grandTotal: number = 0;
   faRemove = faTrash;
   faCart = faShoppingCart;
 
@@ -46,7 +47,12 @@ export class CartComponent implements OnInit {
       this.cartService.saveCartItems();
     }
   }
-
+  // getTotalPrice() {
+  //   this.items.forEach((item: any) => {
+  //     this.grandTotal += item.subtotal;
+  //     console.log('test', item.subtotal);
+  //   });
+  // }
   deleteItem(id: number) {
     this.cartService.removeItem(id);
     this.items = this.cartService.getItems();
