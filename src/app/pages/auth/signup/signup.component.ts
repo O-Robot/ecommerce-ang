@@ -22,4 +22,22 @@ export class SignupComponent {
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
+  submitForm() {
+    const firstName = (document.getElementById('fname') as HTMLInputElement)
+      .value;
+    const lastName = (document.getElementById('lname') as HTMLInputElement)
+      .value;
+    const email = (document.getElementById('email') as HTMLInputElement).value;
+    const password = (document.getElementById('password') as HTMLInputElement)
+      .value;
+
+    const formData = {
+      firstName,
+      lastName,
+      email,
+      password,
+    };
+
+    alert(JSON.stringify(formData));
+  }
 }

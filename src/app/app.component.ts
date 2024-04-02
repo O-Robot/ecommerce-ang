@@ -41,7 +41,11 @@ export class AppComponent implements OnInit {
         )
       )
       .subscribe((event: NavigationEnd) => {
-        this.showNavbar = !['/login', '/create-account'].includes(event.url);
+        this.showNavbar = ![
+          '/login',
+          '/create-account',
+          '/forgot-password',
+        ].includes(event.url);
       });
   }
   ngOnInit(): void {

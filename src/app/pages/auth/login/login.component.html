@@ -41,12 +41,14 @@
     <div class="px-10 py-3 flex flex-col gap-3">
       <button
         type="button"
+        (click)="submitForm()"
         class="mx-auto bg-[#ED1C24] text-white w-full rounded py-2"
       >
         Login
       </button>
       <p class="text-white text-center">or</p>
       <button
+        (click)="alert('Coming Soon')"
         type="button"
         class="mx-auto bg-white w-full rounded py-2 flex gap-3 justify-center"
       >

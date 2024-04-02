@@ -6,6 +6,7 @@ import { AuthGuard } from './services/authGuard/auth-guard.service';
 import { ProductsComponent } from './pages/website/products/products.component';
 import { SingleProductComponent } from './pages/website/single-product/single-product.component';
 import { CartComponent } from './pages/website/cart/cart.component';
+import { ForgotPasswordComponent } from './pages/auth/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
   {
@@ -23,7 +24,7 @@ export const routes: Routes = [
   },
   {
     path: 'forgot-password',
-    component: SignupComponent,
+    component: ForgotPasswordComponent,
   },
   {
     path: 'home',
